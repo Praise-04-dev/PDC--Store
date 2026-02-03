@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDC Store - Welcome</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .landing-container {
+      display: flex;
+      width: 90%;
+      max-width: 1200px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      animation: slideIn 0.8s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .landing-left {
+      flex: 1;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 60px 50px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .landing-left::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      top: -100px;
+      right: -100px;
+    }
+
+    .landing-left::after {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      bottom: -50px;
+      left: -50px;
+    }
+
+    .landing-left h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 1;
+    }
+
+    .landing-left p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      opacity: 0.95;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-list li {
+      padding: 12px 0;
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      margin-right: 15px;
+      text-align: center;
+      line-height: 30px;
+      font-weight: bold;
+    }
+
+    .landing-right {
+      flex: 1;
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .landing-right h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .landing-right p {
+      color: #6c757d;
+      margin-bottom: 30px;
+    }
+
+    .btn-auth {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-auth::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .btn-auth:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn-primary-auth {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-primary-auth:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+      color: white;
+    }
+
+    .btn-secondary-auth {
+      background: white;
+      color: #667eea;
+      border: 2px solid #667eea;
+    }
+
+    .btn-secondary-auth:hover {
+      background: #667eea;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .divider {
+      text-align: center;
+      margin: 25px 0;
+      position: relative;
+    }
+
+    .divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #e0e0e0;
+    }
+
+    .divider span {
+      background: white;
+      padding: 0 15px;
+      position: relative;
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+
+    .guest-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .guest-link a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .guest-link a:hover {
+      color: #764ba2;
+      gap: 10px;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .stat-item p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .landing-container {
+        flex-direction: column;
+        width: 95%;
+      }
+
+      .landing-left {
+        padding: 40px 30px;
+      }
+
+      .landing-left h1 {
+        font-size: 2rem;
+      }
+
+      .landing-right {
+        padding: 40px 30px;
+      }
+
+      .stats {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="landing-container">
+    <!-- Left Side - Branding -->
+    <div class="landing-left">
+      <h1 class="floating">🛍️ PDC Store</h1>
+      <p>Your one-stop destination for amazing products at unbeatable prices!</p>
+      
+      <ul class="feature-list">
+        <li>🚚 Free Shipping on All Orders</li>
+        <li>💳 Secure Payment Gateway</li>
+        <li>🔄 30-Day Money Back Guarantee</li>
+        <li>⭐ Premium Quality Products</li>
+        <li>💬 24/7 Customer Support</li>
+      </ul>
+
+      <div class="stats">
+        <div class="stat-item">
+          <h3>20+</h3>
+          <p>Products</p>
+        </div>
+        <div class="stat-item">
+          <h3>100+</h3>
+          <p>Customers</p>
+        </div>
+        <div class="stat-item">
+          <h3>4.8★</h3>
+          <p>Rating</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side - Authentication -->
+    <div class="landing-right">
+      <h2>Welcome !</h2>
+      <p>Sign in to continue shopping</p>
+
+      <a href="login.html" class="btn-auth btn-primary-auth">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" style="vertical-align: middle; margin-right: 8px;" viewBox="0 0 16 16">
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+        </svg>
+        Sign In
+      </a>
+
+      <a href="signup.html" class="btn-auth btn-secondary-auth">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" style="vertical-align: middle; margin-right: 8px;" viewBox="0 0 16 16">
+          <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+          <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+        </svg>
+        Create Account
+      </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
