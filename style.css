@@ -1,0 +1,741 @@
+
+:root {
+    /* Primary Colors */
+    --primary-color: #5243da;
+    --primary-dark: #5243da;
+    --primary-light: #5243da;
+    
+    /* Secondary Colors */
+    --secondary-color: #282828;
+    --secondary-light: #404040;
+    
+    /* Background Colors */
+    --light-bg: #f8f9fa;
+    --white: #ffffff;
+    --dark-bg: #1a1a1a;
+    
+    /* Gradient Colors */
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    --gradient-danger: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+    --gradient-info: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gradient-warning: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    
+    /* Accent Colors */
+    --success: #28a745;
+    --danger: #dc3545;
+    --warning: #ffc107;
+    --info: #17a2b8;
+    
+    /* Text Colors */
+    --text-dark: #212529;
+    --text-muted: #6c757d;
+    --text-light: #f8f9fa;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+    --shadow-xl: 0 12px 40px rgba(0,0,0,0.2);
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-full: 50%;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+}
+
+/* ===================================
+   2. GLOBAL RESET & BASE STYLES
+   =================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+    background: var(--light-bg);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection Color */
+::selection {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+/* ===================================
+   3. HEADER & NAVIGATION
+   =================================== */
+header {
+    background: var(--white);
+    padding: 1rem 5%;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: var(--transition-normal);
+    animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+header.scrolled {
+    padding: 0.75rem 5%;
+    box-shadow: var(--shadow-lg);
+}
+
+header h1 {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    transition: var(--transition-normal);
+}
+
+header h1:hover {
+    transform: scale(1.05);
+}
+
+.home-header {
+    background: var(--gradient-primary);
+    color: var(--white);
+    padding: var(--spacing-xl);
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    animation: fadeIn 0.8s ease;
+}
+
+.home-header h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    margin-bottom: var(--spacing-sm);
+    -webkit-text-fill-color: unset;
+}
+
+/* ===================================
+   4. BUTTONS & INTERACTIVE ELEMENTS
+   =================================== */
+.btn, button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    color: var(--white) !important;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+    background: var(--gradient-info);
+    color: var(--white) !important;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-outline-dark {
+    background: transparent;
+    color: var(--secondary-color) !important;
+    border: 2px solid var(--secondary-color);
+}
+
+.btn-outline-dark:hover {
+    background: var(--secondary-color);
+    color: var(--white) !important;
+    transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+    background: transparent;
+    color: var(--primary-color) !important;
+    border: 2px solid var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary-color);
+    color: var(--white) !important;
+    transform: translateY(-2px);
+}
+
+/* ===================================
+   5. FORMS & INPUTS
+   =================================== */
+.login-container {
+    max-width: 450px;
+    margin: 3rem auto;
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+form {
+    width: 100%;
+}
+
+form label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"],
+textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    margin-bottom: var(--spacing-md);
+    border: 2px solid #e0e0e0;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    transition: all var(--transition-normal);
+    background: var(--white);
+}
+
+form input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(246, 139, 30, 0.1);
+    transform: translateY(-2px);
+}
+
+form input::placeholder,
+textarea::placeholder {
+    color: var(--text-muted);
+}
+
+/* ===================================
+   6. CARDS & PRODUCT GRID
+   =================================== */
+.card {
+    background: var(--white);
+    border: none !important;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+    overflow: hidden;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+}
+
+.card-img-top {
+    height: 220px;
+    object-fit: cover;
+    transition: var(--transition-slow);
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.1);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm);
+    min-height: 50px;
+    display: -webkit-box;
+      -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-text {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.card-text.text-primary {
+    color: var(--primary-color) !important;
+    font-size: 1.5rem !important;
+    font-weight: 800 !important;
+}
+
+/* Product Grid Animation */
+.row > div {
+    animation: fadeInUp 0.6s ease;
+    animation-fill-mode: both;
+}
+
+.row > div:nth-child(1) { animation-delay: 0.1s; }
+.row > div:nth-child(2) { animation-delay: 0.2s; }
+.row > div:nth-child(3) { animation-delay: 0.3s; }
+.row > div:nth-child(4) { animation-delay: 0.4s; }
+.row > div:nth-child(5) { animation-delay: 0.5s; }
+.row > div:nth-child(6) { animation-delay: 0.6s; }
+
+/* ===================================
+   7. HOME PAGE
+   =================================== */
+.home-container {
+    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-lg);
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.home-container p {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-lg);
+    animation: fadeInUp 0.8s ease 0.3s;
+    animation-fill-mode: both;
+}
+
+.home-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    justify-content: center;
+    animation: fadeInUp 0.8s ease 0.5s;
+    animation-fill-mode: both;
+}
+
+.home-buttons .btn {
+    min-width: 180px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+}
+
+/* ===================================
+   8. STATISTICS CARDS
+   =================================== */
+.stat-card {
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    color: var(--white);
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255,255,255,0.1);
+    transform: rotate(45deg);
+    transition: var(--transition-slow);
+}
+
+.stat-card:hover::before {
+    top: -60%;
+    left: -60%;
+}
+
+.stat-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: var(--shadow-xl);
+}
+
+.stat-card h3 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin: var(--spacing-sm) 0;
+}
+
+.stat-card h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+
+/* ===================================
+   9. TABLES
+   =================================== */
+.table {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background: var(--white);
+}
+
+.table thead {
+    background: var(--gradient-primary);
+    color: var(--white);
+}
+
+.table th {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.875rem;
+    padding: 1rem;
+}
+
+.table td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background: rgba(0,0,0,0.02);
+}
+
+.table tbody tr {
+    transition: var(--transition-fast);
+}
+
+.table tbody tr:hover {
+    background: rgba(246, 139, 30, 0.05);
+    transform: scale(1.01);
+}
+
+/* ===================================
+   10. BADGES & LABELS
+   =================================== */
+.badge {
+    padding: 0.35rem 0.65rem;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.cart-badge {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-badge .badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    padding: 4px 8px;
+    background: var(--gradient-danger);
+    color: var(--white);
+    box-shadow: var(--shadow-md);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* ===================================
+   11. ORDER CARDS
+   =================================== */
+.order-card {
+    border: 1px solid #e0e0e0;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+    transition: all var(--transition-normal);
+    overflow: hidden;
+    animation: fadeInUp 0.5s ease;
+}
+
+.order-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-color);
+}
+
+.order-header {
+    background: var(--gradient-primary);
+    color: var(--white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.order-body {
+    padding: var(--spacing-lg);
+    background: var(--white);
+}
+
+.order-status {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-completed {
+    background: #d4edda;
+    color: #155724;
+}
+
+/* ===================================
+   12. EMPTY STATES
+   =================================== */
+.empty-orders, .empty-cart {
+    text-align: center;
+    padding: var(--spacing-xl);
+    animation: fadeIn 0.8s ease;
+}
+
+.empty-orders svg, .empty-cart svg {
+    opacity: 0.3;
+    margin-bottom: var(--spacing-lg);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.empty-orders h3, .empty-cart h3 {
+    color: var(--text-dark);
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* ===================================
+   13. LOADING & ANIMATIONS
+   =================================== */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: var(--white);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===================================
+   14. SCROLLBAR STYLING
+   =================================== */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary);
+    border-radius: var(--radius-lg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* ===================================
+   15. RESPONSIVE DESIGN
+   =================================== */
+@media (max-width: 768px) {
+    header h1, .home-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .home-container {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+    
+    .login-container {
+        margin: var(--spacing-md);
+        padding: var(--spacing-lg);
+    }
+    
+    .card-img-top {
+        height: 180px;
+    }
+    
+    .stat-card h3 {
+        font-size: 2rem;
+    }
+    
+    .home-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .home-buttons .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    header {
+        padding: 0.75rem 3%;
+    }
+    
+    .btn {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.875rem;
+    }
+    
+    .card-title {
+        font-size: 1rem;
+    }
+}
+
+/* ===================================
+   16. UTILITY CLASSES
+   =================================== */
+.text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.shadow-hover {
+    transition: var(--transition-normal);
+}
+
+.shadow-hover:hover {
+    box-shadow: var(--shadow-xl);
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
+.slide-up {
+    animation: fadeInUp 0.5s ease;
+}
+
+/* ===================================
+   17. PRINT STYLES
+   =================================== */
+@media print {
+    header, .btn, button {
+        display: none !important;
+    }
+    
+    body {
+        background: white;
+    }
+    
+    .card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+}
